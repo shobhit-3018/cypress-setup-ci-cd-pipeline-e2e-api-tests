@@ -20,6 +20,8 @@
   },
   "devDependencies": {
     "cypress": "^15.15.0",
-    "nodemon": "^1.18.11"
+    "eslint": "^10.4.0",
+    "nodemon": "^1.18.11",
+    "wait-on": "^9.0.10"
   }
 }

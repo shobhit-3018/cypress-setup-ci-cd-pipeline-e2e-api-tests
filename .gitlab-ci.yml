@@ -13,6 +13,12 @@ cache:
     - .npm
     - node_modules
 
+# Pipeline runs on push and merge requests
+workflow:
+  rules:
+    - if: $CI_MERGE_REQUEST_IID
+    - if: $CI_COMMIT_BRANCH
+
 install_dependencies:
   stage: install
   image: node:20
@@ -45,7 +51,7 @@ test_api:
   script:
     - node index.js &
     - npx wait-on http://127.0.0.1:8000
-    - npx cypress run --spec "cypress/api/**/*_spec.js"
+    - npx cypress run --config-file cypress.config.js --spec "cypress/api/**/*_spec.js"
   artifacts:
     when: on_failure
     paths:
@@ -60,7 +66,7 @@ test_ui:
   script:
     - node index.js &
     - npx wait-on http://127.0.0.1:8000
-    - npx cypress run --spec "cypress/e2e/**/*_spec.js"
+    - npx cypress run --config-file cypress.config.js --spec "cypress/e2e/**/*_spec.js"
   artifacts:
     when: on_failure
     paths:
