@@ -5,7 +5,7 @@ stages:
   - test
 
 variables:
-  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  npm_config_cache: '$CI_PROJECT_DIR/.npm'
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
