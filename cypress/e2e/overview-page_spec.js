@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 import selectors from '../support/selectors';
 
 describe('Node Farm - Overview Page UI', () => {
